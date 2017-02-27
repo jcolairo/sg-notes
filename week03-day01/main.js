@@ -24,3 +24,83 @@ console.log(parseInt(numberAsString));
 console.log(parseInt(numberAsString) + number);
 console.log(parseInt(3.1415927));
 console.log(parseFloat(3.1415927));
+
+
+console.log('Control flow:');
+var moneyInPocket = 20;
+
+if (moneyInPocket > 10) {
+  console.log('Another drink please!');
+}
+else if (moneyInPocket > 5){
+  console.log('Make mine a half then');
+}
+else {
+  console.log('You\'re too broke. Go home');
+}
+
+var countryOfOrigin = 'Kenya';
+var greeting = '';
+
+switch(countryOfOrigin) {
+  case 'France':
+    greeting = 'Bonjour';
+    break;
+  case 'Spain':
+    greeting = 'Hola!';
+    break;
+  case 'Indonesia':
+    greeting = 'Salamat sore';
+    break;
+  case 'Malta':
+    greeting = 'Bonjo!';
+    break;
+  case 'Kenya':
+    greeting = 'Jambo';
+    break;
+  default:
+    greeting = 'Well hello there';
+    break;
+}
+
+console.log(greeting);
+
+var dayOfWeek = 'Thursday'
+
+if (moneyInPocket > 10 && dayOfWeek === 'Friday') {
+  console.log('YAY. Have a drink after work');
+}
+else {
+  console.log('Go home you have work tomorrow');
+}
+
+var dayOfWeek = 'Thursday'
+
+if (dayOfWeek === 'Thursday' || dayOfWeek === 'Friday') {
+  console.log('YAY. Have a drink after work');
+}
+else {
+  console.log('Go home you have work tomorrow');
+}
+
+console.log('--- truthy/falsey:');
+var truthyThings = [1, 0, 'something', '', -1, null, undefined, NaN];
+
+for (var i = 0; i < truthyThings.length; i++) {
+ console.log('  element', i, 'is:', truthyThings[i]);
+if (truthyThings[i]) {
+  console.log('  --> truthy');
+}
+else {
+  console.log('  --> falsey');
+}
+}
+
+var yourName = prompt('What is your name?');
+
+if (yourName) {
+  alert('Nice one, ' + yourName);
+}
+else {
+  alert('Not sure what you name is!');
+}
