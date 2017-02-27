@@ -1,0 +1,26 @@
+console.log('in main.js');
+var o = {};
+var s = '';
+var b = true;
+var n = 1;
+var a = [];
+console.log('Using "typeof" operator:');
+console.log(typeof o);
+console.log(typeof s);
+console.log(typeof b);
+console.log(typeof n);
+console.log(typeof a);
+
+console.log('Playing with different types:');
+var numberAsString = '5';
+var number = 3;
+console.log(numberAsString + number);
+console.log(typeof (numberAsString + number));
+console.log(typeof (number + numberAsString));
+console.log(number + number);
+console.log(number + number + 'Harry');
+console.log ('Harry' - 'Potter');
+console.log(parseInt(numberAsString));
+console.log(parseInt(numberAsString) + number);
+console.log(parseInt(3.1415927));
+console.log(parseFloat(3.1415927));
