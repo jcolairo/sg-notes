@@ -29,3 +29,30 @@ if ({} === {}) {
 else {
   console.log('Not Equal');
 }
+
+console.log(' --- Functions:');
+
+function createPerson(firstNameParam, lastNameParam, emailParam, ageParam) {
+  var newPerson = {
+    firstName: firstNameParam,
+    lastName: lastNameParam,
+    email: emailParam,
+    age: ageParam
+  };
+
+  return newPerson;
+};
+
+var harold = createPerson('Harald', 'Kumar', 'h.huma@example.com', 15);
+console.log('newPerson:', harold);
+
+function isOldEnough(age) {
+  return (age >=18);
+}
+
+if (isOldEnough(harold.age)) {
+  console.log('Come in');
+}
+else {
+  console.log('Come back when you are older');
+}
