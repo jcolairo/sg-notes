@@ -1,7 +1,5 @@
 console.log('in main.js');
 
-var capitalCity = 'London';
-
 var person1 = {
   firstName: 'Bob',
   lastName: 'le Plant',
@@ -23,13 +21,12 @@ var people = [person1, person2, person3];
 
 for (var i = 0; i < people.length; i++) {
   console.log(people[i].firstName, people[i].age);
-};
-
-
-if ({} === {}) {
-  console.log('Equal');
 }
-else {
+
+var a = {};
+if (a === {}) {
+  console.log('Equal');
+} else {
   console.log('Not Equal');
 }
 
@@ -47,7 +44,7 @@ function createPerson(firstNameParam, lastNameParam, emailParam, ageParam) {
   };
 
   return newPerson;
-};
+}
 
 var harold = createPerson('Harald', 'Kumar', 'h.huma@example.com', 15);
 console.log('new person\'s full name:', harold.fullName());
@@ -55,7 +52,7 @@ console.log('new person\'s full name:', harold.fullName());
 var tola = createPerson('Tola', 'Olaoke', 'tolaoke@spartaglobal.co', 21);
 var asma = createPerson('Asma', 'Chaima', 'achaima@spartaglobal.co', 21);
 people = [];
-people.push (harold, tola, asma);
+people.push(harold, tola, asma);
 
 function isOldEnough(age) {
   return (age >=18);
@@ -63,8 +60,7 @@ function isOldEnough(age) {
 
 if (isOldEnough(harold.age)) {
   console.log('Come in');
-}
-else {
+} else {
   console.log('Come back when you are older');
 }
 
@@ -98,7 +94,7 @@ Circle.prototype.area = function () {
   return Math.PI * this.radius * this.radius;
 };
 
-var coin = new Circle (1.2);
+var coin = new Circle(1.2);
 var plate = new Circle(7);
 var circles = [coin, plate];
 
