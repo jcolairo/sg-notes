@@ -77,5 +77,37 @@ for (i = 0; i < people.length; i++) {
   // else {
   //   console.log(people[i].fullName(), 'is NOT old enough');
   // }
+}
 
+console.log('--- OO JavaScript:');
+
+function Circle(radius) {
+  this.radius = radius;
+  // one way to write an instance method
+  this.circumference = function () {
+    return 2 * Math.PI * this.radius;
+  };
+}
+
+// static (or class) property/variable:
+Circle.PI = 22/7;
+
+// another way to write an instane method:
+// add it to the prototype
+Circle.prototype.area = function () {
+  return Math.PI * this.radius * this.radius;
+};
+
+var coin = new Circle (1.2);
+var plate = new Circle(7);
+var circles = [coin, plate];
+
+// console.log('Radius is:', coin.radius);
+// console.log('Cicumference is:', coin.circumference());
+// console.log('Area is:', coin.area());
+
+for (i = 0; i < circles.length; i++) {
+  console.log('Radius is:', circles[i].radius);
+  console.log('Cicumference is:', circles[i].circumference());
+  console.log('Area is:', circles[i].area());
 }
