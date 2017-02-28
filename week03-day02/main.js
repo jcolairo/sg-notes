@@ -1,4 +1,7 @@
 console.log('in main.js');
+
+var capitalCity = 'London';
+
 var person1 = {
   firstName: 'Bob',
   lastName: 'le Plant',
@@ -37,14 +40,22 @@ function createPerson(firstNameParam, lastNameParam, emailParam, ageParam) {
     firstName: firstNameParam,
     lastName: lastNameParam,
     email: emailParam,
-    age: ageParam
+    age: ageParam,
+    fullName: function() {
+      return firstNameParam + ' ' + lastNameParam + '.';
+    }
   };
 
   return newPerson;
 };
 
 var harold = createPerson('Harald', 'Kumar', 'h.huma@example.com', 15);
-console.log('newPerson:', harold);
+console.log('new person\'s full name:', harold.fullName());
+
+var tola = createPerson('Tola', 'Olaoke', 'tolaoke@spartaglobal.co', 21);
+var asma = createPerson('Asma', 'Chaima', 'achaima@spartaglobal.co', 21);
+people = [];
+people.push (harold, tola, asma);
 
 function isOldEnough(age) {
   return (age >=18);
@@ -55,4 +66,16 @@ if (isOldEnough(harold.age)) {
 }
 else {
   console.log('Come back when you are older');
+}
+
+for (i = 0; i < people.length; i++) {
+  console.log(people[i].fullName(), (isOldEnough(people[i].age)) ? 'is old enough' : 'is Not old enough');
+
+  // if (isOldEnough(people[i].age)) {
+  //     console.log(people[i].fullName(), 'is old enough');
+  // }
+  // else {
+  //   console.log(people[i].fullName(), 'is NOT old enough');
+  // }
+
 }
