@@ -1,5 +1,18 @@
-console.log('in main.js');
+var newCssClassName = 'minor';
+var homeIconElement = document.getElementById('home-button-icon');
 
+// 1. Using setAttribute(), and maintaining existing class names
+var homeIconElementClassAttribute = homeIconElement.getAttribute('class');
+homeIconElementClassAttribute += ' ' + newCssClassName;
+homeIconElement.setAttribute('class', homeIconElementClassAttribute);
+
+// 2. Using className, and maintaining existing class names
+homeIconElement.className += ' ' + newCssClassName;
+
+// 3. Using classList.add()
+homeIconElement.classList.add(newCssClassName);
+
+console.log('in main.js');
 $(function () {
   console.log('DOM loaded (jQuery)');
   console.log('--- using jQuery');
