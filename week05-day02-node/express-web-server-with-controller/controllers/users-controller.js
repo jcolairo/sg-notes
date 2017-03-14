@@ -60,8 +60,7 @@ function createUser(req, res) {
     email: req.body.email
   };
   users.push(newUser);
-  console.log('req body:', req.body);
-  res.status(200).send('<h1>Action: created new user with is ' + userId + '/h1>');
+  res.redirect('/users');
 }
 
 // Action: edit
@@ -73,7 +72,6 @@ function editUser(req, res) {
 function updateUser(req, res) {
 
   var userId = req.params.id;
-  var status;
   var user;
   var html = '<h1>Updating user with id: ' + userId + '</h1>';
   var userIndex = findUserIndexById(userId);
@@ -84,13 +82,12 @@ function updateUser(req, res) {
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
     user.email = req.body.email;
-    status = 200;
     html += '<p>User updated</p>';
+    res.redirect('/users');
   } else {
-    status = 404;
     html += '<em>Could not find user with id ' + userId + '</em>';
+    res.status(404).send(html);
   }
-  res.status(status).send(html);
 }
 
 // Action: show
@@ -119,7 +116,6 @@ function showUser(req, res) {
 function destroyUser(req, res) {
   var userId = req.params.id;
   var userIndex;
-  var status;
   var html = '<h1>Delete user ' + userId + '</h1>';
 
   userIndex = findUserIndexById(userId);
@@ -127,14 +123,13 @@ function destroyUser(req, res) {
   if (userIndex !== -1) {
     // user exists
     users.splice(userIndex, 1);
-    status = 200;
+    res.redirect('/users');
     html += 'User with id ' + userId + ' deleted';
   } else {
     // trying to delete non-existent user
-    status = 404;
     html += '<em>User with id ' + userId + ' does not exist; cannot delete</em>';
+    res.status(404).send(html);
   }
-  res.status(status).send(html);
 }
 
 module.exports = {
