@@ -29,14 +29,20 @@ function getNextUserId() {
 
 // Action: index
 function indexUsers(req, res) {
-  var html = '<h1>List of users</h1>';
+  res.render('users/index', {
+    title: 'User list: ',
+    users: users
+  });
 
-  html += '<ul>';
-  for (var i = 0; i < users.length; i++) {
-    html += '<li><a href="/users/' + users[i].id + '">' + users[i].firstName + ' ' + users[i].lastName + ' (' + users[i].email + ')' + '</a></li>';
-  }
-  html += '</ul>';
-  res.status(200).send(html);
+
+  // var html = '<h1>List of users</h1>';
+  //
+  // html += '<ul>';
+  // for (var i = 0; i < users.length; i++) {
+  //   html += '<li><a href="/users/' + users[i].id + '">' + users[i].firstName + ' ' + users[i].lastName + ' (' + users[i].email + ')' + '</a></li>';
+  // }
+  // html += '</ul>';
+  // res.status(200).send(html);
 }
 
 // Action: new
@@ -85,35 +91,6 @@ function updateUser(req, res) {
     html += '<em>Could not find user with id ' + userId + '</em>';
   }
   res.status(status).send(html);
-
-
-  // console.log(users);
-
-
-  // var userId = req.params.id;
-  // var userIndex;
-  // var user;
-  // var status;
-  // var html = '<h1>User id: ' + userId + ' has been updated</h1>';
-  // var existingUser = {
-  //   id: userId,
-  //   firstName: req.body.firstName,
-  //   lastName: req.body.lastName,
-  //   email: req.body.email
-  // };
-  // if (userId === userIndex) {
-  //   user = users[userIndex];
-  //   status = 200;
-  //   html += '<p>First name: ' + user.firstName + '</p>';
-  //   html += '<p>Last name: ' + user.lastName + '</p>';
-  //   html += '<p>Email: ' + user.email + '</p>';
-  // } else {
-  //   status = 404;
-  //   html += '<em>User not found with id ' + userId + '</em>';
-  // }
-  // res.status(status).send(html);
-  // console.log(users);
-
 }
 
 // Action: show
