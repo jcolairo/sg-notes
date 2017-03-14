@@ -47,7 +47,15 @@ function indexUsers(req, res) {
 
 // Action: new
 function newUser(req, res) {
-  res.status(200).send('<h1>Action: new</h1>');
+  var userId = getNextUserId();
+  var newUser = {
+    id: userId,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email
+  };
+  users.push(newUser);
+  res.redirect('/users');
 }
 
 // Action: create
@@ -65,6 +73,7 @@ function createUser(req, res) {
 
 // Action: edit
 function editUser(req, res) {
+
   res.status(200).send('<h1>Action: edit</h1>');
 }
 
