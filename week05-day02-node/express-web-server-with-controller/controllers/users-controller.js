@@ -65,7 +65,55 @@ function editUser(req, res) {
 
 // Action: update
 function updateUser(req, res) {
-  res.status(200).send('<h1>Action: update</h1>');
+
+  var userId = req.params.id;
+  var status;
+  var user;
+  var html = '<h1>Updating user with id: ' + userId + '</h1>';
+  var userIndex = findUserIndexById(userId);
+
+
+  if (userIndex !== -1) {
+    user = users[userIndex];
+    user.firstName = req.body.firstName;
+    user.lastName = req.body.lastName;
+    user.email = req.body.email;
+    status = 200;
+    html += '<p>User updated</p>';
+  } else {
+    status = 404;
+    html += '<em>Could not find user with id ' + userId + '</em>';
+  }
+  res.status(status).send(html);
+
+
+  // console.log(users);
+
+
+  // var userId = req.params.id;
+  // var userIndex;
+  // var user;
+  // var status;
+  // var html = '<h1>User id: ' + userId + ' has been updated</h1>';
+  // var existingUser = {
+  //   id: userId,
+  //   firstName: req.body.firstName,
+  //   lastName: req.body.lastName,
+  //   email: req.body.email
+  // };
+  // if (userId === userIndex) {
+  //   user = users[userIndex];
+  //   status = 200;
+  //   html += '<p>First name: ' + user.firstName + '</p>';
+  //   html += '<p>Last name: ' + user.lastName + '</p>';
+  //   html += '<p>Email: ' + user.email + '</p>';
+  // } else {
+  //   status = 404;
+  //   html += '<em>User not found with id ' + userId + '</em>';
+  // }
+  // res.status(status).send(html);
+  // console.log(users);
+
 }
 
 // Action: show
