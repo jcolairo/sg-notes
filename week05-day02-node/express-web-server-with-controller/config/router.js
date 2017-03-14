@@ -7,11 +7,13 @@ router.route('/users/')
   .get(usersController.index)
 // Action: create
   .post(usersController.create);
+  
 // Action: new
 router.get('/users/new', usersController.new);
 // Action: edit
 router.get('/users/:id/edit', usersController.edit);
 // Action: update
+
 router.route('/users/:id')
   .put(usersController.update)
 // Action: show
