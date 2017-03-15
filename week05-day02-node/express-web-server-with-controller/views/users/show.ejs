@@ -2,6 +2,12 @@
   <p>First Name: <%= user.firstName %></p>
   <p>Last Name: <%= user.lastName %></p>
   <p>Email: <%= user.email %></p>
+  <form action="/users/<%= user.id %>">
+  <a href="/users/<%= user.id %>/edit">Edit</a>
+  <a href="/users/delete"><button type="button">Delete</button></a>
   <% } else { %>
   <em>User not found. Sorry.</em>
 <%  } %>
+
+<%# // Delete will not work at this point - cannot specify DELETE as value for methos attribture on form
+// will fix in a later iteration%>

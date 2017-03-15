@@ -1,0 +1,14 @@
+<% if (user) { %>
+  <form action="/users/<% = user.id %>">
+  <form action="/users/<%= user.id %>">
+    <input type="text" placeholder="First Name" value="<%= user.firstName %>">
+    <input type="text" placeholder="Last Name" value="<%= user.lastName %>">
+    <input type="text" placeholder="Email" value="<%= user.email %>">
+    <button>Update</button>
+  </form>
+<% } else { %>
+  <em>User not found. Soz.</em>
+<% } %>
+
+<%# // Update will not work at this point - cannot specify PUT as value for methos attribture on form
+// will fix in a later iteration%>
