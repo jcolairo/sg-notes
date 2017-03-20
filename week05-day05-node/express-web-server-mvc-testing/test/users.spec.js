@@ -20,6 +20,10 @@ function getFirstUserIdFromUserListHTML(html) {
   return pathElements[2];
 }
 
+function generateUniqueFirstName () {
+  return 'firstName' + Math.random();
+}
+
 describe('Users', function () {
   beforeEach(function () {
     request = chai.request(app);
@@ -110,13 +114,17 @@ describe('Users', function () {
         });
     });
     it.only('should create new user when input data is valid', function (done) {
+      var testPostFirstName = generateUniqueFirstName();
+
       request
       .post('/users')
       .set('Content-Type', 'application/x-www-form-urlencoded')
-      .send({ firstName: 'testPostFirstName', email: 'testPostEmail'})
+      .send({ firstName: testPostFirstName, email: 'testPostEmail'})
       .end(function (err, res) {
-        res.should.have.status(200);
+        var fistNameRegExp = new RegExp(testPostFirstName);
 
+        res.should.have.status(200);
+        res.text.should.match(fistNameRegExp);
         done();
       });
     });
