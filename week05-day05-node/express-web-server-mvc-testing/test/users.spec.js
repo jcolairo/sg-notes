@@ -46,7 +46,7 @@ describe('Users', function () {
         });
     });
   });
-// Test for UPDATE
+// Test for PUT/UPDATE
   describe('PUT', function () {
     it('should return error for non-existent user id', function (done) {
       request
@@ -65,17 +65,64 @@ describe('Users', function () {
           request
             .put('/users/' + userId)
             .set('Content-Type', 'application/x-www-form-urlencoded')
-            .send({firstName: 'testFirstName', lastName: 'testLastName', email: 'testEmail'})
+            .send({firstName: 'testUpdateFirstName', lastName: 'testUpdateLastName', email: 'testUpdateEmail'})
             .end(function (err, res) {
               res.should.have.status(200);
-              res.text.should.match(/testFirstName/);
-              res.text.should.match(/testLastName/);
+              res.text.should.match(/testUpdateFirstName/);
+              res.text.should.match(/testUpdateLastName/);
               done();
             });
         });
     });
   });
-// Test for DELETE
+// Test for POST/CREATE
+  describe('POST', function () {
+    it('Should return error when firstName is blank', function (done) {
+      request
+      .post('/users')
+      .set('Content-Type', 'application/x-www-form-urlencoded')
+      .send({ firstName: '', email: 'testPostEmail'})
+      .end(function (err, res) {
+        var jsonResponse = JSON.parse(res.text);
+
+        res.should.have.status(400);
+        expect(jsonResponse).to.be.an('array');
+        expect(jsonResponse.length).to.equal(1);
+        expect(jsonResponse[0].path).to.equal('firstName');
+        console.log('jsonResponse:', jsonResponse);
+        done();
+      });
+    });
+    it('Should return error when email is blank', function (done) {
+      request
+        .post('/users')
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .send({ firstName: 'testPostFirstName', email: ''})
+        .end(function (err, res) {
+          var jsonResponse = JSON.parse(res.text);
+
+          res.should.have.status(400);
+          expect(jsonResponse).to.be.an('array');
+          expect(jsonResponse.length).to.equal(1);
+          expect(jsonResponse[0].path).to.equal('email');
+          console.log('jsonResponse:', jsonResponse);
+          done();
+        });
+    });
+    it.only('should create new user when input data is valid', function (done) {
+      request
+      .post('/users')
+      .set('Content-Type', 'application/x-www-form-urlencoded')
+      .send({ firstName: 'testPostFirstName', email: 'testPostEmail'})
+      .end(function (err, res) {
+        res.should.have.status(200);
+
+        done();
+      });
+    });
+  });
+
+// Test for DELETE/DESTROY
   describe('DELETE', function () {
     it('should return error for non-existent user id', function (done) {
       request
@@ -99,9 +146,5 @@ describe('Users', function () {
             });
         });
     });
-  });
-// Test for CREATE
-  describe('CREATE', function () {
-    
   });
 });
