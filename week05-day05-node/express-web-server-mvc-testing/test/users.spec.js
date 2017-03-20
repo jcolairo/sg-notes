@@ -46,7 +46,36 @@ describe('Users', function () {
         });
     });
   });
+// Test for UPDATE
+  describe('PUT', function () {
+    it('should return error for non-existent user id', function (done) {
+      request
+        .put('/users/non-existent-user-id')
+        .end(function (err, res) {
+          res.should.have.status(404);
+          done();
+        });
+    });
+    it('should return correct result for existing user', function (done) {
+      request
+        .get('/users/')
+        .end(function (err, res) {
+          var userId = getFirstUserIdFromUserListHTML(res.text);
 
+          request
+            .put('/users/' + userId)
+            .set('Content-Type', 'application/x-www-form-urlencoded')
+            .send({firstName: 'testFirstName', lastName: 'testLastName', email: 'testEmail'})
+            .end(function (err, res) {
+              res.should.have.status(200);
+              res.text.should.match(/testFirstName/);
+              res.text.should.match(/testLastName/);
+              done();
+            });
+        });
+    });
+  });
+// Test for DELETE
   describe('DELETE', function () {
     it('should return error for non-existent user id', function (done) {
       request
@@ -70,5 +99,9 @@ describe('Users', function () {
             });
         });
     });
+  });
+// Test for CREATE
+  describe('CREATE', function () {
+    
   });
 });
