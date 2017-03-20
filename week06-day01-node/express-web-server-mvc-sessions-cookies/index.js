@@ -1,10 +1,10 @@
 var express = require('express');
-var session = require('express-session');
 var router = require('./config/router');
 var bodyParser = require('body-parser');
 var layouts = require('express-ejs-layouts');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
+var session = require('express-session');
 var app = express();
 var port = 3000;
 
