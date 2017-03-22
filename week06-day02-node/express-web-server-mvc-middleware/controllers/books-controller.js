@@ -14,7 +14,7 @@ function editBook(req, res) {
       res.status(404).send('Could not get book');
       return;
     }
-    res.render('users/editBook', {
+    res.render('users/edit', {
       title: 'Edit book',
       user: user
     });
