@@ -1,9 +1,15 @@
 <% if (user) { %>
   <form method="post" action="/users/<%= user.id %>">
     <input type="hidden" name="_method" value="put">
-    <input type="text" name="firstName" placeholder="First Name" value="<%= user.firstName %>">
-    <input type="text" name="lastName" placeholder="Last Name" value="<%= user.lastName %>">
-    <input type="email" name="email" placeholder="Email" value="<%= user.email %>">
+
+    <label for="firstName">First Name</label>
+    <input id="firstName" type="text" name="firstName" placeholder="First Name" value="<%= user.firstName %>">
+
+    <label for="lastName">Last Name</label>
+    <input id="lastName" type="text" name="lastName" placeholder="Last Name" value="<%= user.lastName %>">
+
+    <label for="email">Email</label>
+    <input id="email" type="email" name="email" placeholder="Email" value="<%= user.email %>">
     <button>Update</button>
   </form>
 <% } else { %>

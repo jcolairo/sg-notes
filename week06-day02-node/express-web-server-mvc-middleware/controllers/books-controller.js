@@ -4,16 +4,16 @@ var Book = require('../models/book-model');
 function editBook(req, res) {
   var bookId = req.params.id;
 
-  Book.findOne({ _id: bookId }, function (err, user) {
+  Book.findOne({ _id: bookId }, function (err, book) {
     if (err) {
       console.log('Could not get book:', err);
       // ditto comment above re. keeping complexity to a minimum:
       res.status(404).send('Could not get book');
       return;
     }
-    res.render('users/edit', {
+    res.render('books/edit', {
       title: 'Edit book',
-      user: user
+      book: book
     });
   });
 }
@@ -21,6 +21,7 @@ function editBook(req, res) {
 // Action: update
 function updateBook(req, res) {
   var bookId = req.params.id;
+  var userId = req.params.userId;
   var updatedBook = {
     title: req.body.title,
     author: req.body.author
@@ -28,12 +29,11 @@ function updateBook(req, res) {
 
   Book.findOneAndUpdate({ _id: bookId }, updatedBook, function (err) {
     if (err) {
-      console.log('Could not get existing user to update:', err.message);
-      // ditto comment above re. keeping complexity to a minimum:
-      res.status(404).send('Could not get existing user to update');
+      console.log('Could not get existing book to update:', err.message);
+      res.status(404).send('Could not get existing book to update');
       return;
     }
-    res.redirect('/users');
+    res.redirect('/users/' + userId);
   });
 }
 
