@@ -16,7 +16,7 @@
           <input type="hidden" name="_method" value="delete">
           <input type="hidden" name="userId" value="<%= user.id %>">
           <button>Delete</button>
-          <a href="/books/<%= user.books[i].id %>/edit">Edit</a>
+          <a href="/users/<%= user.books[i].id %>/edit">Edit</a>
         </form>
       </li>
     <% } %>
