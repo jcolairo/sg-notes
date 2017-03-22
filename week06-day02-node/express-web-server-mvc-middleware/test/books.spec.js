@@ -3,7 +3,7 @@
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 var app = require('../index');
-var expect = chai.expect;
+// var expect = chai.expect;
 var request;
 
 chai.should();
@@ -35,6 +35,33 @@ describe('Books', function () {
   beforeEach(function () {
     request = chai.request(app);
   });
+
+  describe('PUT', function () {
+    it('should return error for non-existent book id', function (done) {
+      request
+        .put('/users/non-existent-user-id')
+        .end(function (err, res) {
+          res.should.have.status(404);
+          done();
+        });
+    });
+    it.only('should return correct result for existing book', function (done) {
+      request
+        .get('/users')
+        .end(function (err, res) {
+          var bookId = getFirstBookIdFromUserPageHTML(res.text);
+
+          request
+            .put('/books/' + bookId)
+            .end({ title: 'testTitle', author: 'testAuthor'})
+            .end(function (err, res) {
+              res.should.have.status(200);
+              done();
+            });
+        });
+    });
+  });
+
 
   describe('DELETE', function () {
     it('should return error for non-existent book id', function (done) {
