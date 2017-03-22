@@ -1,8 +1,5 @@
 var Book = require('../models/book-model');
 
-require('../models/user-model');
-
-
 // Action: edit
 function editBook(req, res) {
   var bookId = req.params.id;
@@ -43,15 +40,16 @@ function updateBook(req, res) {
 // Action: destroy
 function destroyBook(req, res) {
   var bookId = req.params.id;
+  var userId = req.body.userId;
+
 
   Book.deleteOne({ _id: bookId }, function (err) {
     if (err) {
       console.log('Could not get book to delete:', err.message);
-      // ditto comment above re. keeping complexity to a minimum:
       res.status(404).send('Could not get book to delete');
       return;
     }
-    res.redirect('/users');
+    res.redirect('/users/' + userId);
   });
 }
 

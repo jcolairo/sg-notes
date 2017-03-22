@@ -8,6 +8,8 @@ router.get('/', function (req, res) {
     title: 'Home'
   });
 });
+
+// users
 router.route('/users')
   .get(usersController.index)
   .post(usersController.create);
@@ -20,8 +22,7 @@ router.route('/users/:id')
   .get(usersController.show)
   .delete(usersController.destroy);
 
-
-
+// books
 router.get('/books/:id/edit', booksController.edit);
 
 router.route('/books/:id')

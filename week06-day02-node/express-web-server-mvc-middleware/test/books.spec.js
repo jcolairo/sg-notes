@@ -45,7 +45,7 @@ describe('Books', function () {
           done();
         });
     });
-    it.only('should return correct result for existing book', function (done) {
+    it('should return correct result for existing book', function (done) {
       request
         .get('/users')
         .end(function (err, res) {
@@ -86,8 +86,11 @@ describe('Books', function () {
               res.should.have.status(200);
               request
                 .delete('/books/' + bookId)
+                .send({ userId: userId })
                 .end(function (err, res) {
+                  var bookIdRegExp = new RegExp(bookId);
                   res.should.have.status(200);
+                  res.text.should.not.match(bookIdRegExp);
                   done();
                 });
             });

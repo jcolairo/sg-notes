@@ -14,12 +14,14 @@
         <%= user.books[i].title %> <em>by <%= user.books[i].author %></em>
         <form method="post" action="/books/<%= user.books[i].id %>">
           <input type="hidden" name="_method" value="delete">
+          <input type="hidden" name="userId" value="<%= user.id %>">
           <button>Delete</button>
           <a href="/books/<%= user.books[i].id %>/edit">Edit</a>
         </form>
       </li>
     <% } %>
   </ol>
+  <a href="/books/new">New book</a>
 <% } else { %>
   <em>User not found. Soz.</em>
 <% } %>
