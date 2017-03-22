@@ -24,7 +24,14 @@ router.route('/users/:id')
   .delete(usersController.destroy);
 
 // books
+
+router.route('/books')
+  .post(booksController.create);
+
+router.get('/books/new', booksController.new);
+
 router.get('/books/:id/edit', booksController.edit);
+
 router.route('/books/:id')
   .put(booksController.update)
   .delete(booksController.destroy);

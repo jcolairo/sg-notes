@@ -4,6 +4,7 @@ var chai = require('chai');
 var chaiHttp = require('chai-http');
 var app = require('../index');
 var TestUtils = require('./test-utils');
+var expect = chai.expect;
 var request;
 
 chai.should();
@@ -43,7 +44,7 @@ describe('Books', function () {
            .end(function (err, res) {
              var titleRegExp = new RegExp(testTitle);
              var authorRegExp = new RegExp(testAuthor);
-             
+
              res.should.have.status(200);
              res.text.should.match(titleRegExp);
              res.text.should.match(authorRegExp);
@@ -51,6 +52,56 @@ describe('Books', function () {
            });
          });
      });
+    });
+  });
+
+  describe.only('POST', function () {
+    it('should return error when title is blank', function (done) {
+      request
+          .post('/books')
+          .set('Content-Type', 'application/x-www-form-urlencoded')
+          .send({ title: '', author: 'testAuthor' })
+          .end(function (err, res) {
+            var jsonResponse = JSON.parse(res.text);
+
+            res.should.have.status(400);
+            expect(jsonResponse).to.be.an('array');
+            expect(jsonResponse.length).to.equal(1);
+            expect(jsonResponse[0].path).to.equal('title');
+            done();
+          });
+    });
+    it('should return error author is blank', function (done) {
+      request
+          .post('/books')
+          .set('Content-Type', 'application/x-www-form-urlencoded')
+          .send({ title: 'testTitle', author: '' })
+          .end(function (err, res) {
+            var jsonResponse = JSON.parse(res.text);
+
+            res.should.have.status(400);
+            expect(jsonResponse).to.be.an('array');
+            expect(jsonResponse.length).to.equal(1);
+            expect(jsonResponse[0].path).to.equal('author');
+            done();
+          });
+    });
+    it('should create new book when input data is valid', function (done) {
+      var testTitle = TestUtils.generateUniqueString();
+      var testAuthor = TestUtils.generateUniqueString();
+
+      request
+          .post('/books')
+          .set('Content-Type', 'application/x-www-form-urlencoded')
+          .send({ title: testTitle, author: testAuthor })
+          .end(function (err, res) {
+            // var titleRegExp = new RegExp(testTitle);
+            // var authorRegExp = new RegExp(testAuthor);
+
+            res.should.have.status(200);
+            // res.text.should.match(' ');
+            done();
+          });
     });
   });
 

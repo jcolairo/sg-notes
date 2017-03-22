@@ -1,5 +1,37 @@
 var Book = require('../models/book-model');
 
+// Action: new
+function newBook(req, res) {
+  res.render('books/new', {
+    title: 'New Book'
+  });
+}
+
+// Action: create
+function createBook(req, res) {
+  var newBook = new Book();
+
+  newBook.title = req.body.title;
+  newBook.author = req.body.author;
+
+  newBook.save(function (err) {
+    var errorJson = [];
+
+    if (err) {
+      for (var path in err.errors) {
+        errorJson.push({
+          path: path,
+          message: err.errors[path].message
+        });
+        console.log('Could not create new book: error:', err.errors[path].message);
+      }
+      res.status(400).json(errorJson);
+      return;
+    }
+    res.redirect('/users');
+  });
+}
+
 // Action: edit
 function editBook(req, res) {
   var bookId = req.params.id;
@@ -52,6 +84,8 @@ function destroyBook(req, res) {
 }
 
 module.exports = {
+  new: newBook,
+  create: createBook,
   edit: editBook,
   update: updateBook,
   destroy: destroyBook
