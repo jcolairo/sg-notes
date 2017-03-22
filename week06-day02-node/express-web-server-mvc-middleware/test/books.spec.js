@@ -3,6 +3,7 @@
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 var app = require('../index');
+var TestUtils = require('./test-utils');
 // var expect = chai.expect;
 var request;
 
@@ -12,24 +13,6 @@ chai.use(chaiHttp);
 // We are looking for HTML that looks like this:
 // <a href="/users/58cbb8e616f8b0228f71b315">
 // We can the extract the user ID from the `href` attribute using a regex.
-function getFirstUserIdFromUserListHTML(html) {
-  var regEx = /\/users\/[0-9a-f]+/;
-  var result = regEx.exec(html)[0];
-  var pathElements = result.split('/');
-
-  return pathElements[2];
-}
-
-// We are looking for HTML that looks like this:
-// <a href="/books/58cbb8e616f8b0228f71b315">
-// We can the extract the user ID from the `href` attribute using a regex.
-function getFirstBookIdFromUserPageHTML(html) {
-  var regEx = /\/books\/[0-9a-f]+/;
-  var result = regEx.exec(html)[0];
-  var pathElements = result.split('/');
-
-  return pathElements[2];
-}
 
 describe('Books', function () {
   beforeEach(function () {
@@ -49,7 +32,7 @@ describe('Books', function () {
       request
         .get('/users')
         .end(function (err, res) {
-          var bookId = getFirstBookIdFromUserPageHTML(res.text);
+          var bookId = TestUtils.getFirstBookIdFromUserPageHTML(res.text);
 
           request
             .put('/books/' + bookId)
@@ -76,12 +59,12 @@ describe('Books', function () {
       request
         .get('/users')
         .end(function (err, res) {
-          var userId = getFirstUserIdFromUserListHTML(res.text);
+          var userId = TestUtils.getFirstUserIdFromUserListHTML(res.text);
 
           request
             .get('/users/' + userId)
             .end(function (err, res) {
-              var bookId = getFirstBookIdFromUserPageHTML(res.text);
+              var bookId = TestUtils.getFirstBookIdFromUserPageHTML(res.text);
 
               res.should.have.status(200);
               request
