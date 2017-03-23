@@ -91,6 +91,19 @@ describe('Books', function () {
       var testAuthor = TestUtils.generateUniqueString();
 
       request
+        .get('/users')
+        .end(function (err, res) {
+          var userId = TestUtils.getFirstUserIdFromUserListHTML(res.text);
+
+       request
+         .get('/users/' + userId)
+         .end(function (err, res) {
+           var bookId = TestUtils.getFirstBookIdFromUserPageHTML(res.text);
+           var testTitle = TestUtils.generateUniqueString('title');
+           var testAuthor = TestUtils.generateUniqueString('author');
+
+
+      request
           .post('/books')
           .set('Content-Type', 'application/x-www-form-urlencoded')
           .send({ title: testTitle, author: testAuthor })
