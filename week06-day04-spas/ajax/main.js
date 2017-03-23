@@ -3,7 +3,7 @@ $(function () {
 
   console.log('page is loaded');
 
-  function ajaxTheManualWay () {
+  function ajaxTheManualWay() {
     var request = new XMLHttpRequest();
 
     console.log('AJAX the manual way');
@@ -13,28 +13,27 @@ $(function () {
       var jokeElement = document.getElementById('joke');
 
       jokeElement.innerHTML = json.value.joke;
-      console.log('json.value.joke', json.value.joke);
     });
     request.send();
   }
 
-  function ajaxTheJQueryWay () {
+  function ajaxTheJQueryWay() {
     console.log('AJAX the jQuery way');
 
     $.get(jokeUrl, function (data) {
       $('#joke').html(data.value.joke);
     });
   }
-  
-// source: http://stackoverflow.com/a/5915122/155206
-  function selectRandomElement (items) {
+
+  // source: http://stackoverflow.com/a/5915122/155206
+  function selectRandomElement(items) {
     return items[Math.floor(Math.random() * items.length)];
   }
 
   var ajaxFunctions = [ajaxTheManualWay, ajaxTheJQueryWay];
   setInterval(function () {
-    var randsomAjaxFunction = selectRandomElement(ajaxFunctions);
+    var randomAjaxFunction = selectRandomElement(ajaxFunctions);
 
-    randsomAjaxFunction();
-  }, 10000);
+    randomAjaxFunction();
+  }, 5000);
 });
