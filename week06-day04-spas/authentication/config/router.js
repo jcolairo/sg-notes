@@ -4,7 +4,6 @@ var usersController = require('../controllers/users-controller');
 var booksController = require('../controllers/books-controller');
 var sessionsController = require('../controllers/sessions-controller');
 
-// home page
 router.get('/', function (req, res) {
   res.render('index', {
     title: 'Home'
