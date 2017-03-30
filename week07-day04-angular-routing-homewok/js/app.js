@@ -17,7 +17,10 @@ function mainRouter($stateProvider, $urlRouterProvider) {
     // Edit
     .state('edit', {
       url: '/home/:id/edit',
-      templateUrl: '../state/home.html'
+      controller: function(controller, $stateProvider) {
+        controller.id = $stateProvider.id;
+      }
+      // templateUrl: '../state/home.html'
     });
 
   $urlRouterProvider.otherwise('/');

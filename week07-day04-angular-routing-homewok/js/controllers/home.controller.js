@@ -19,6 +19,8 @@ function HomeController() {
     controller.todos.splice($index, 1);
   };
 
+  
+
   function init() {
     controller.todos = ['Something', 'Something Something', 'Something Something Something','Something Something Something Something'];
   }
