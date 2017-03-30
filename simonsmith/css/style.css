@@ -1,0 +1,19 @@
+.currentState {
+  background: black;
+  color: white;
+}
+nav ul {
+  padding: 0;
+}
+nav ul li {
+  display: inline-block;
+}
+nav ul li a {
+  padding: 10px;
+}
+nav a {
+  padding: 20px;
+}
+img {
+  height: 200px;
+}

@@ -1,0 +1,5 @@
+<section ng-controller="CatsController as cats">
+  <h1>{{cats.title}}</h1>
+  <h3>{{cats.context}}:</h3>
+  <img ng-repeat="image in cats.images track by $index" ng-src="{{cats.images[$index]}}">
+</section>

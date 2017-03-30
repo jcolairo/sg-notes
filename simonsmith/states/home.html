@@ -1,0 +1,8 @@
+<section ng-controller="HomeController as home">
+  <h2>{{home.title}}</h2>
+  <h3>{{home.context}}:</h3>
+
+  <p ng-repeat="(key, value) in home.interests">
+    <strong>{{key}}:</strong> {{value}}
+  </p>
+</section>

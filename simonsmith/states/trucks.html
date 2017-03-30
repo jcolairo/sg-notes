@@ -1,0 +1,8 @@
+<section ng-controller="TrucksController as trucks">
+  <h2>{{trucks.title}}</h2>
+  <h3>{{trucks.context}}:</h3>
+  <img ng-repeat="image in trucks.images track by $index" ng-src="{{trucks.images[$index]}}">
+  <div>
+    <iframe ng-repeat="video in trucks.videos track by $index" ng-src="{{trucks.video}}"></iframe>
+  </div>
+</section>
