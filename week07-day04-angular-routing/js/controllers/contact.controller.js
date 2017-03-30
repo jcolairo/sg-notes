@@ -3,6 +3,7 @@ function ContactController() {
 
   function init() {
     console.log('ContactController:', controller);
+    controller.title = 'Contact Us';
   }
   init();
 }
