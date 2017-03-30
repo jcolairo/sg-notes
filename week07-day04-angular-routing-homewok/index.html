@@ -11,18 +11,19 @@
   <script src="js/controllers/home.controller.js"></script>
   <script src="js/controllers/new.controller.js"></script>
 
-  <title>Angular States</title>
+  <title>TODOS</title>
 </head>
 <body>
 
-  <h1>Angular States</h1>
+  <h1>TODOS</h1>
 
   <nav>
     <a ui-sref="home">Home</a>
     <a ui-sref="new">New</a>
   </nav>
 
-  <section ui-view>
+  <section ng-controller="HomeController as home" ui-view>
+
   </section>
 
 </body>

@@ -1,8 +1,51 @@
-<section ng-controller="HomeController as home">
+<section>
 
   <h2>{{home.title}}</h2>
 
-  <p ng-repeat="(key, value) in home.todos">
-    <strong>{{key}}:</strong> {{value}}
-  </p>
+  <div>
+    <ul>
+      <li ng-repeat="todo in home.todos track by $index">
+        <strong>{{$index + 1}}:</strong> {{todo}}
+
+      <input
+        type="text"
+        ng-value="todos"
+        placeholder="edit TODOS"
+        ng-model="home.updatedTodosField[$index]">
+      <button type="button" ng-click="home.updateTodos">Update TODOS</button>
+
+      <button type="button" ng-click="home.deleteTodos($index)">Delete</button>
+
+      <input type="checkbox" ng-model="" ng-click="home.deleteTodos($index)">
+    </li>
+
+    </ul>
+
+
+
+
+  </div>
+
+
+
+
+  <!-- <div ng-controller="FirstCtrl">
+    <input type="text" ng-model="Aplha.Field">
+    First {{Alpha.Field}}
+  </div>
+
+  <div ng-controller="SecondCtrl">
+    <input type="text" ng-model="Beta.Feild">
+    Second {{Beta.Field}}
+  </div> -->
+
+  <!-- <h4>{{home.addTitle}}</h4>
+
+  <form>
+    TODOS: <input type="text" ng-model="home.newTodos">
+  </form>
+  <button type="submit" ng-click="home.addNewTodos()">
+    Submit
+  </button> -->
+
 </section>
