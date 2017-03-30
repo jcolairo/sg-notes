@@ -44,25 +44,19 @@ function HomeController() {
     controller.trainers = [];
   };
 
+  controller.canDisplayTrainerList = function() {
+    return controller.trainers.length > 0;
+  };
+
   controller.deleteTrainer = function($index) {
     console.log('deleteTrainer:', controller.deleteTrainer);
     controller.trainers.splice($index, 1);
   };
 
-  // controller.updateTrainersName = function() {
-  //   if(controller.trainer) {
-  //     controller.trainers.push(controller);
-  //     controller.trainer = '';
-  //     console.log('updateTrainersName passed:', controller.updateTrainersName);
-  //   }
-  //   console.log('updateTrainersName failed:', controller.updateTrainersName);
-  // };
-
   controller.updateTrainer = function ($index) {
     if(controller.updatedTrainerNames[$index]) {
       controller.trainers.splice($index, 1, controller.updatedTrainerNames[$index]);
     }
-    console.log('sdfsdfs');
   };
 
   function init() {
@@ -71,7 +65,6 @@ function HomeController() {
     controller.title = 'Home page';
     controller.trainers = ['Steve', 'Matt', 'Ollie', 'Niall'];
     controller.hideGonzo();
-    controller.updatedTrainerName = [];
   }
 
   init();
