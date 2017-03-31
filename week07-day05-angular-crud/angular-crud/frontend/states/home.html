@@ -4,6 +4,7 @@
   <li class="duck" ng-repeat="d in duck.allDucks">
     <p><strong>Name: </strong>
       <a ui-sref="show({duckId: d._id})"> {{d.name}} </a>
+      <button type="button" ng-click="duck.editDuck(d._id)">Edit Duck</button>
       <button type="button" ng-click="duck.deleteDuck(d._id)">Shoot Duck</button>
     </p>
   </li>
