@@ -1,4 +1,4 @@
-function DuckController($stateParams, DuckFactory ) {
+function DuckController(DuckFactory, $stateParams, $state) {
   var controller = this;
 
   controller.getDuck = function() {
@@ -15,10 +15,25 @@ function DuckController($stateParams, DuckFactory ) {
     );
   };
 
+  controller.addDuck = function() {
+    console.log('addDuck');
+    DuckFactory.createOne(controller.newDuck).then(
+      function success(response) {
+        console.log('Duck', response);
+        $state.go('home');
+      },
+      function error(error) {
+        console.log('Error adding duck', error);
+      }
+    );
+  };
+
   function init() {
     console.log(controller);
     controller.selectedDuck = undefined;
     controller.allDucks = [];
+    controller.newDuck = {};
+    controller.colors = ['red', 'blue', 'pink with yellow polka dots'];
     //make an API call to retrieve the data
     DuckFactory.getAll().then(
       function success(response) {
