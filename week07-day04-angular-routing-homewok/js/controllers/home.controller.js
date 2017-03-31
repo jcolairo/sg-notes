@@ -2,6 +2,7 @@ function HomeController() {
   var controller = this;
 
   controller.title = 'Show current TODOS';
+  controller.complete = 'Completed TODOS';
 
   controller.addTitle = 'Add new TODOS';
   controller.addNewTodos = function() {
@@ -19,27 +20,16 @@ function HomeController() {
     controller.todos.splice($index, 1);
   };
 
-  
+  controller.checkbox = function(todo) {
+    controller.completedTodos.push(todo);
+  };
 
   function init() {
     controller.todos = ['Something', 'Something Something', 'Something Something Something','Something Something Something Something'];
+    controller.completedTodos = [];
   }
   init();
 }
-//
-// var myApp = angular.module('myApp', []);
-//
-// myApp.factory('Fact', function() {
-//   return {Field: ''};
-// });
-//
-// myApp.controller('FirstCtrl', function (controller, Fact ) {
-//   controller.Alpha = Fact;
-// });
-//
-// myApp.controller('SecondCtrl', function (controller, Fact) {
-//   controller.Beta = Fact;
-// });
 
 angular
   .module('angularstates')

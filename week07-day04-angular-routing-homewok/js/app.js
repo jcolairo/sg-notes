@@ -16,11 +16,11 @@ function mainRouter($stateProvider, $urlRouterProvider) {
     })
     // Edit
     .state('edit', {
-      url: '/home/:id/edit',
-      controller: function(controller, $stateProvider) {
-        controller.id = $stateProvider.id;
-      }
-      // templateUrl: '../state/home.html'
+      url: '/home/edit',
+      templateUrl: '../states/edit.html'
+      // controller: function(controller, $stateProvider) {
+      //   controller.id = $stateProvider.id;
+      // }
     });
 
   $urlRouterProvider.otherwise('/');

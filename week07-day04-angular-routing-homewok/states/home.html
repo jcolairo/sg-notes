@@ -5,15 +5,25 @@
   <div>
     <ol>
       <li ng-repeat="todo in home.todos track by $index">
-        <strong>{{$index + 1}}:</strong> {{todo}}
+        <a><strong>{{$index + 1}}:</strong> {{todo}}</a>
 
       <button type="button" ng-click="home.deleteTodos($index)">Delete</button>
 
-      <input type="checkbox" ng-model="" ng-click="home.deleteTodos($index)">
+      <input type="checkbox" ng-click="home.deleteTodos($index); home.checkbox(todo)">
     </li>
 
   </ol>
 
+  </div>
+
+  <h4>{{home.complete}}</h4>
+
+  <div>
+    <ol>
+      <li ng-repeat="completedTodo in home.completedTodos track by $index">
+        {{home.completedTodos[$index]}}
+      </li>
+    </ol>
   </div>
 
 </section>

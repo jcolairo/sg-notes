@@ -4,7 +4,6 @@ function EditController() {
   controller.title = 'Edit user';
 
   function init() {
-
   }
   init();
 }
