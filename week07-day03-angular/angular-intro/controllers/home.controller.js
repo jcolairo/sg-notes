@@ -53,10 +53,14 @@ function HomeController() {
     controller.trainers.splice($index, 1);
   };
 
-  controller.updateTrainer = function ($index) {
-    if(controller.updatedTrainerNames[$index]) {
-      controller.trainers.splice($index, 1, controller.updatedTrainerNames[$index]);
+  controller.updateTrainer = function (index) {
+    if(controller.updatedTrainerNames[index]) {
+      controller.trainers[index] = controller.updatedTrainerNames[index];
     }
+  };
+
+  controller.isAddButtonDisable = function () {
+    return !controller.newTrainerName;
   };
 
   function init() {

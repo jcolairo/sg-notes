@@ -24,7 +24,11 @@
     <ul>
       <li ng-repeat="trainer in home.trainers track by $index">
         {{ trainer }}
-        <input type="text" ng-value="trainer" placeholder="edit trainers name" ng-model="home.updatedTrainerNames[$index]">
+        <input
+          type="text"
+          ng-value="trainer"
+          placeholder="edit trainers name"
+          ng-model="home.updatedTrainerNames[$index]">
         <button type="button" ng-click="home.updateTrainer($index)">Save Name</button>
         <button type="button" ng-click="home.deleteTrainer($index)">Delete</button>
       </li>
@@ -38,7 +42,10 @@
   <h2>Add a trainer</h2>
   <form>
     <input type="text" ng-model="home.newTrainerName">
-    <button type="button" ng-click="home.addTrainer()">Add</button>
+    <button
+      type="button"
+      ng-click="home.addTrainer()"
+      ng-disabled="home.isAddButtonDisable()">Add</button>
   </form>
 
   <p>
