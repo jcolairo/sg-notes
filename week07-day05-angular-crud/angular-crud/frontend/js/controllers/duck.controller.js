@@ -28,6 +28,17 @@ function DuckController(DuckFactory, $stateParams, $state) {
     );
   };
 
+  controller.deleteDuck = function(duckId) {
+    DuckFactory.deleteOne(duckId).then(
+      function success(response) {
+        console.log('duck deleted:', response);
+      },
+      function error(error) {
+        console.log('Error deleting duck', error);
+      }
+    );
+  };
+
   function init() {
     console.log(controller);
     controller.selectedDuck = undefined;
