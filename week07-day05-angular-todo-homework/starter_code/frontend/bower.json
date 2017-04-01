@@ -1,0 +1,17 @@
+{
+  "name": "frontend",
+  "homepage": "https://github.com/jcolairo/sg-notes",
+  "authors": [
+    "James Colairo <jcolairo@spartaglobal.co>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
