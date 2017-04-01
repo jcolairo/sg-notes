@@ -1,3 +1,9 @@
 <h2>All TODOS</h2>
 
-<p>some text here</p>
+<ul>
+  <li ng-repeat="t in todo.allTodos">
+    <p><strong>TODO: </strong>
+      <a ui-sref="show({todoId: t._id})">{{ t.title }}</a>
+    </p>
+  </li>
+</ul>

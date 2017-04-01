@@ -20,13 +20,11 @@
   <h1>List of TODOS</h1>
 
   <nav>
-    <ul>
-      <li><a ui-sref="home">Home</a></li>
-      <li><a ui-sref="new">New TODO</a></li>
-    </ul>
+      <a ui-sref="home">Home</a>
+      <a ui-sref="new">New TODO</a>
   </nav>
 
-  <section ng-controller="TodosController as todo" ui-view>
+  <section ng-controller="TodoController as todo" ui-view>
 
   </section>
 

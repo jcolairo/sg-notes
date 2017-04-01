@@ -1,4 +1,4 @@
-function TodosController($state, $stateParams, TodoFactory) {
+function TodoController($state, $stateParams, TodoFactory) {
   var controller = this;
 
   controller.getTodo =  function() {
@@ -56,11 +56,11 @@ function TodosController($state, $stateParams, TodoFactory) {
   function init() {
     console.log(controller);
     controller.selectedTodo = undefined;
-    controller.allTodo = [];
+    controller.allTodos = [];
     controller.newTodo = {};
     TodoFactory.getAll().then(
       function success(response) {
-        controller.allTodo = response.data;
+        controller.allTodos = response.data;
       },
       function error(error) {
         console.log('Error getting TODOS:', error);
@@ -72,4 +72,4 @@ function TodosController($state, $stateParams, TodoFactory) {
 
 angular
   .module('TodoApp')
-  .controller('TodosController', TodosController);
+  .controller('TodoController', TodoController);

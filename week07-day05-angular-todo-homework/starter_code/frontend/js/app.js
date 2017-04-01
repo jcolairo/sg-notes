@@ -6,7 +6,7 @@ function MainRouter ($stateProvider, $urlRouterProvider) {
     })
     .state('new', {
       url: '/todos/new',
-      templateUrl: '/states/new/html'
+      templateUrl: '/states/new.html'
     })
     .state('show', {
       url: '/todos/:todoId',
