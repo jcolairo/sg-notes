@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var todoController = require('../controllers/todo');
+var todoController = require('../controllers/todo.controller');
 
 router.route('/todos')
   .get(todoController.getAll)

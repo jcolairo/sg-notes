@@ -2,7 +2,7 @@
   "name": "angular-todo",
   "version": "0.0.0",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "nodemon server.js",
     "seed" : "node config/seed.js"
   },
   "dependencies": {
