@@ -1,4 +1,4 @@
-var Todo = require('../models/Todo');
+var Todo = require('../../models/Todo');
 
 // GET
 function getAll(request, response) {
