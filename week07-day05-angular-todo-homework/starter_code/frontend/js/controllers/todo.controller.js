@@ -70,6 +70,7 @@ function TodoController($state, $stateParams, TodoFactory) {
     controller.allTodos = [];
     controller.newTodo = {};
     controller.complete = [true, false];
+    controller.completedTodos = [];
     TodoFactory.getAll().then(
       function success(response) {
         controller.allTodos = response.data;

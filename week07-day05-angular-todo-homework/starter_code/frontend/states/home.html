@@ -1,11 +1,22 @@
 <h2>All TODOS</h2>
 
-<ul>
+<ol>
   <li ng-repeat="t in todo.allTodos">
     <p><strong>TODO: </strong>
       <a ui-sref="show({todoId: t._id})">{{ t.title }}</a>
       <button type="button" ng-click="todo.editTodo(t._id)">Edit TODO</button>
       <button type="button" ng-click="todo.deleteTodo(t._id); todo.reloadState()" >Delete TODO</button>
+      <input type="checkbox" ng-click="todo.deleteTodo(t._id); todo.checkbox(t)">
     </p>
   </li>
-</ul>
+</ol>
+
+<h4>Completed TODO's</h4>
+
+<div>
+  <ol>
+    <li ng-repeat="completedTodo in todo.completedTodos">
+      {{todo.completedTodos[t._id]}}
+    </li>
+  </ol>
+</div>

@@ -1,7 +1,7 @@
-<h2>Show a TODO</h2>
+<h2>{{ todo.selectedTodo.todo.title }}</h2>
 
 <section ng-init="todo.getTodo()">
-  <p><strong>TODO:</strong> {{ todo.selectedTodo.todo.title }}</p>
+  <!-- <p><strong>TODO:</strong> {{ todo.selectedTodo.todo.title }}</p> -->
   <p><strong>What needs to be done:</strong> {{ todo.selectedTodo.todo.desc }}</p>
   <p><strong>Is it complete:</strong> {{ todo.selectedTodo.todo.isComplete }}</p>
 </section>
