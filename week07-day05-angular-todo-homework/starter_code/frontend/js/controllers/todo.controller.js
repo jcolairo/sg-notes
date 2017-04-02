@@ -26,10 +26,8 @@ function TodoController($state, $stateParams, TodoFactory) {
   };
 
   controller.addTodo = function () {
-    console.log('addTodo()');
     TodoFactory.createOne(controller.newTodo).then(
-      function success(response) {
-        console.log('Created new TODO:', response);
+      function success() {
         controller.reloadState();
         $state.go('home');
       },
@@ -41,8 +39,7 @@ function TodoController($state, $stateParams, TodoFactory) {
 
   controller.deleteTodo = function (todoId) {
     TodoFactory.deleteOne(todoId).then(
-      function success(response) {
-        console.log('TODO deleted:', response);
+      function success() {
         controller.reloadState();
       },
       function error(error) {
@@ -57,8 +54,7 @@ function TodoController($state, $stateParams, TodoFactory) {
 
   controller.updatedTodo = function() {
     TodoFactory.editOne(controller.selectedTodo.todo).then(
-      function success(response) {
-        console.log('TODO updated:', response);
+      function success() {
         controller.reloadState();
         $state.go('home');
       },
@@ -73,7 +69,7 @@ function TodoController($state, $stateParams, TodoFactory) {
     controller.selectedTodo = undefined;
     controller.allTodos = [];
     controller.newTodo = {};
-    controller.complete = ['yes', 'no'];
+    controller.complete = [true, false];
     TodoFactory.getAll().then(
       function success(response) {
         controller.allTodos = response.data;
