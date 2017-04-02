@@ -1,5 +1,5 @@
-var express = require('express')
-var router = express.Router()
+var express = require('express');
+var router = express.Router();
 
 var todoController = require('../controllers/todo');
 
@@ -9,7 +9,8 @@ router.route('/todos')
 
 router.route('/todos/:id')
   .get(todoController.getTodo)
-  .patch(todoController.updateTodo);
+  .patch(todoController.updateTodo)
+  .delete(todoController.deleteTodo);
 
 
-module.exports = router
+module.exports = router;
