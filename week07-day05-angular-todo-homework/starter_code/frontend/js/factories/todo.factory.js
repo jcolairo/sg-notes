@@ -28,7 +28,8 @@ function TodoFactory(API_URL, $http) {
     editOne: function(editedTodo) {
       return $http({
         method: 'PATCH',
-        url: `${API_URL}/todos/${editedTodo._id}`
+        url: `${API_URL}/todos/${editedTodo._id}`,
+        data: editedTodo
       });
     }
   };

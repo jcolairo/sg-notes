@@ -4,6 +4,8 @@
   <li ng-repeat="t in todo.allTodos">
     <p><strong>TODO: </strong>
       <a ui-sref="show({todoId: t._id})">{{ t.title }}</a>
+      <button type="button" ng-click="todo.editTodo(t._id)">Edit TODO</button>
+      <button type="button" ng-click="todo.deleteTodo(t._id); todo.reloadState()" >Delete TODO</button>
     </p>
   </li>
 </ul>

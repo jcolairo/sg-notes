@@ -1,1 +1,41 @@
 <h2>Add new TODO</h2>
+
+<form ng-submit="todo.addTodo()">
+
+  <div>
+    <label for="new-todo-title">New Todo:</label>
+    <input
+      type="text"
+      id="new-todo-title"
+      placeholder="New TODO title"
+      ng-model="todo.newTodo.title">
+  </div>
+
+  <div>
+    <label for="new-todo-desc">New TODO Description:</label>
+    <input
+      type="text"
+      id="new-todo-desc"
+      placeholder="Description"
+      ng-model="todo.newTodo.desc">
+  </div>
+
+  <div>
+    <label for="new-todo-complete">Is the TODO complete?</label>
+    <select
+      id="new-todo-complete"
+      ng-model="todo.newTodo.isComplete">
+
+      <option
+        ng-repeat="option in todo.complete"
+        value="{{ option }}">{{ option }}
+      </option>
+
+  <div>
+    <input type="submit" value="Add TODO">
+  </div>
+
+    </select>
+  </div>
+
+</form>

@@ -13,7 +13,7 @@ function MainRouter ($stateProvider, $urlRouterProvider) {
       templateUrl: '/states/show.html'
     })
     .state('edit', {
-      url: 'todos/:todoId/edit',
+      url: '/todos/:todoId/edit',
       templateUrl: '/states/edit.html'
     });
 

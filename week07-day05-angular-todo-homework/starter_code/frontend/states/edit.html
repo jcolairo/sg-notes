@@ -1,0 +1,50 @@
+<h2>Edit TODO</h2>
+
+<section ng-init="todo.getTodo()">
+
+  <form ng-submit="todo.updateTodo()">
+
+    <div>
+      <label for="new-todo-title">New TODO:</label>
+      <input
+        type="text"
+        id="new-todo-title"
+        placeholder="New TODO"
+        ng-model="todo.selectedTodo.todo.title">
+    </div>
+
+    <div>
+      <label for="new-todo-desc">Description:</label>
+      <input
+        type="text"
+        id="new-todo-desc"
+        placeholder="Description"
+        ng-model="todo.selectedTodo.todo.desc">
+    </div>
+
+    <div>
+      <label for="new-todo-complete">Is the TODO complete?</label>
+      <select
+        id="new-todo-complete"
+        ng-model="todo.selectedTodo.todo.isComplete">
+
+        <option
+          ng-repeat="option in todo.complete"
+          ng-selected="option"
+          value="{{ option }}">{{ option }}
+        </option>
+
+      </select>
+    </div>
+
+    <div>
+      <input
+        type="submit"
+        value="Update"
+        ng-click="todo.updatedTodo(t._id)"
+        ng-sref="home">
+    </div>
+
+  </form>
+
+</section>
