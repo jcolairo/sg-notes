@@ -37,6 +37,19 @@ function TodoController($state, $stateParams, TodoFactory) {
     );
   };
 
+  controller.updateTodoCompleteStatus = function(todoId ,isComplete) {
+    console.log(`markTodoComplete(${todoId}), ${isComplete}`);
+    TodoFactory.updateOneCompleteStatus(todoId, isComplete).then(
+      function success(response) {
+        console.log('Complete status set:', response);
+        controller.reloadState();
+      },
+      function error(error) {
+        console.log('Error setting complete statsus:', error);
+      }
+    );
+  };
+
   controller.deleteTodo = function (todoId) {
     TodoFactory.deleteOne(todoId).then(
       function success() {
