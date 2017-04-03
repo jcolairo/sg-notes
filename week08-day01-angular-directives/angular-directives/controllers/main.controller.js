@@ -25,7 +25,7 @@ function mainController () {
       age: 21,
       gender: 'female',
       position: 'Academy Manager',
-      skills: ['keeping the wheel spinning', 'life', 'knitting', 'danceing']
+      skills: ['keeping the wheel spinning', 'life', 'knitting', 'dancing']
     },
     {
       name: 'Steve',
