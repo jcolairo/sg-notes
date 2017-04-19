@@ -10,7 +10,10 @@ describe('TodosController', () => {
   });
 
   describe('initialisation', () => {
-    it('Should set inputText correctly', () => {
+    it('Should initialise lsit correctly', () => {
+      expect(controllerToTest.list).toEqual([]);
+    });
+    it('Should initialise inputText correctly', () => {
       expect(controllerToTest.inputText).toEqual('');
     });
   });
