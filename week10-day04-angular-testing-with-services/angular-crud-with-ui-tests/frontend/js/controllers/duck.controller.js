@@ -1,8 +1,8 @@
 function DuckController($state, $stateParams, DuckFactory) {
-  var controller = this;
+  const controller = this;
 
   controller.getDuck = () => {
-    var duckId = $stateParams.duckId;
+    const duckId = $stateParams.duckId;
 
     DuckFactory.getOne(duckId).then(
       (response) => {
