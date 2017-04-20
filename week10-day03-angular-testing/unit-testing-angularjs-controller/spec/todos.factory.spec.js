@@ -23,6 +23,17 @@ describe('TodosFactory', () => {
       factoryToTest.add(newTodoItem);
       expect(factoryToTest.list[factoryToTest.list.length -1]).toEqual(newTodoItem);
     });
+    it('Should add a new todo item to an empty todo list', () => {
+      const newTodoItem = 'another new todo';
+      factoryToTest.add(newTodoItem);
+      var arrayList = 0;
+      expect(factoryToTest.list[arrayList]).toEqual(newTodoItem);
+    });
+    it('Should be at least 3 characters long', () => {
+      const newTodoItem = 'abc';
+      factoryToTest.add(newTodoItem);
+      expect(factoryToTest.list[factoryToTest.string[newTodoItem]]).toBeGreaterThan(3);
+    });
   });
 
   describe('clear()', () => {
