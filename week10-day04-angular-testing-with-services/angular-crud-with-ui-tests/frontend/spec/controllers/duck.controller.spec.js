@@ -65,7 +65,7 @@ describe('DuckController', () => {
   });
 
   describe('updateDuck()', () => {
-    fit('Should make API call to update duck with correct data', () => {
+    it('Should make API call to update duck with correct data', () => {
       const testUpdatedDuck = {
         _id: testDuckId
       };
@@ -81,6 +81,32 @@ describe('DuckController', () => {
       httpBackend.verifyNoOutstandingExpectation();
     });
   });
+
+  describe('addDuck()', () => {
+    it('Should make an API call to add duck with correct data', () => {
+      const testDuckToAdd = {
+        name: 'Daisy'
+      };
+
+      httpBackend
+        .expect('POST', `${API_URL}/ducks`, testDuckToAdd)
+        .respond({});
+      controllerToTest.newDuck = testDuckToAdd;
+      controllerToTest.addDuck();
+      httpBackend.flush();
+      httpBackend.verifyNoOutstandingExpectation();
+    });
+    it('Should go to "home" state on success', () => {
+      httpBackend
+        .when('POST', `${API_URL}/ducks`)
+        .respond({});
+
+      controllerToTest.addDuck();
+      httpBackend.flush();
+      expect(mock$State.go).toHaveBeenCalledWith('home');
+    });
+  });
+});
 
 
 
@@ -112,7 +138,6 @@ describe('DuckController', () => {
 //       expect(MockDuckFactory.inptutText).toEqual(inptutText);
 //     });
 //   });
-});
 
 
 // expect PATCH
