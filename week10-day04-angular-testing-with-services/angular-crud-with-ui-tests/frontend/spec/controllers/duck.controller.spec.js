@@ -53,7 +53,7 @@ describe('DuckController', () => {
 
 
   describe('deleteDuck()', () => {
-    fit('Should delete duck with specified duckId', () => {
+    it('Should delete duck with specified duckId', () => {
 
       httpBackend
         .expect('DELETE', `${API_URL}/ducks/${testDuckId}`)
@@ -64,30 +64,26 @@ describe('DuckController', () => {
     });
   });
 
+  describe('updateDuck()', () => {
+    fit('Should make API call to update duck with correct data', () => {
+      const testUpdatedDuck = {
+        _id: testDuckId
+      };
+
+      httpBackend
+        .expect('PATCH', `${API_URL}/ducks/${testDuckId}`, testUpdatedDuck)
+        .respond({});
+      controllerToTest.selectedDuck = {
+        duck: testUpdatedDuck
+      };
+      controllerToTest.updateDuck();
+      httpBackend.flush();
+      httpBackend.verifyNoOutstandingExpectation();
+    });
+  });
 
 
 
-
-
-//   describe('updateDuck()', () => {
-//     it('Should update a duck on a specified duckId', () => {
-//       const testUpdateDuck = ['duck three'];
-//       // const testUpdatedDuck = ['duck four'];
-//       const editedDuck = 'abc';
-//       let duck;
-//
-//       console.log('1', testUpdateDuck);
-//       controllerToTest.editDuck(duck);
-//       // MockDuckFactory.editOne(duck);
-//       httpBackend
-//         .when('PATCH', `${API_URL}/ducks/${editedDuck}`, (testUpdateDuck) => {
-//           expect(testUpdateDuck);
-//         });
-//       // httpBackend.flush();
-//       console.log('controllerToTest.selectedDuck.duck', controllerToTest.updateDuck);
-//       console.log('3', testUpdateDuck);
-//     });
-//   });
 //
 //   describe('deleteDuck()', () => {
 //     it('Should delete specified duck', () => {
