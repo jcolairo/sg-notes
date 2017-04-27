@@ -1,5 +1,5 @@
 // run `npm run seed` to execute this file
-// this will only work for single models with no associations but the concept can be applied to anything really. 
+// this will only work for single models with no associations but the concept can be applied to anything really.
 
 
 var mongoose = require('mongoose');
@@ -36,5 +36,3 @@ function addRecord (data) {
 
 console.log('Seeding the database...')
 Promise.all(records).then(process.exit);
-
-
